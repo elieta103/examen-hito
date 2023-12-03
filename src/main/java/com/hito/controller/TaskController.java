@@ -21,9 +21,9 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping
-    public ResponseEntity<String> createTask(@RequestBody @Valid TaskDTO taskDTO){
+    public ResponseEntity<TaskDTO> createTask(@RequestBody @Valid TaskDTO taskDTO){
         taskService.addTask(taskDTO);
-        return new ResponseEntity<>("Task y sus materiales, guardados exitosamente. "+LocalDateTime.now(), HttpStatus.CREATED);
+        return new ResponseEntity<TaskDTO>(taskDTO, HttpStatus.CREATED);
     }
 
     @GetMapping
