@@ -22,8 +22,9 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<TaskDTO> createTask(@RequestBody @Valid TaskDTO taskDTO){
-        taskService.addTask(taskDTO);
-        return new ResponseEntity<TaskDTO>(taskDTO, HttpStatus.CREATED);
+        TaskDTO saved = taskService.addTask(taskDTO);
+        log.info("Controller {} ", saved.toString());
+        return new ResponseEntity<TaskDTO>(saved, HttpStatus.CREATED);
     }
 
     @GetMapping

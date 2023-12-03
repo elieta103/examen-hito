@@ -23,9 +23,7 @@ public class TaskServiceImpl implements TaskService{
     public TaskDTO addTask(TaskDTO taskDTO) {
         Task task = Mapper.mapDtoToEntityTask(taskDTO);
         Task taskSaved = taskRepository.save(task);
-        TaskDTO taskDto = Mapper.mapEntityToDto(taskSaved);
-        log.info("Service : {} ",taskDto.toString());
-        return taskDTO;
+        return Mapper.mapEntityToDto(taskSaved);
     }
 
     @Override
